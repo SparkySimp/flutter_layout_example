@@ -30,10 +30,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
+    // the coefficient that all boxes' heights are
+    // proportional to.
+    final r = (media.size.height - 100) / 9;
+
+    // the coefficient that all boxes' widths are proportional to.
+    final p = (media.size.width - 40);
 
     return Scaffold(
       appBar: null,
@@ -48,35 +53,48 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   color: Colors.blue,
                   margin: const EdgeInsets.all(20.0),
+                  width: p,
+                  height: 2 * r,
                 )
               ],
             ),
             Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                      padding: const EdgeInsets.all(20),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              margin: const EdgeInsets.all(20),
-                              color: Colors.yellow.shade100),
-                          Container(
-                              margin: const EdgeInsets.all(20),
-                              color: Colors.yellow.shade100),
-                          Container(
-                              margin: const EdgeInsets.all(20),
-                              color: Colors.yellow.shade100),
-                        ],
-                      ))
-                ]),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                    padding: const EdgeInsets.all(20),
+                    width: p,
+                    height: r,
+                    color: Colors.lightBlue,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.all(20),
+                          color: Colors.yellow.shade100,
+                          width: 200,
+                          height: 200,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(20),
+                          color: Colors.yellow.shade100,
+                          width: 200,
+                          height: 200,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(20),
+                          color: Colors.yellow.shade100,
+                          width: 200,
+                          height: 200,
+                        ),
+                      ],
+                    ))
+              ],
+            ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Column(
-                  children: <Widget>
-                  [
-                  Container(color: Colors.lightBlue.shade100, height: 
+                Column(children: <Widget>[
+                  Container(color: Colors.cyan, height: 3 * r),
                 ]),
                 Column(),
                 Column(),
@@ -87,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
